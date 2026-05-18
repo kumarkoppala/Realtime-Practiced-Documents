@@ -23,6 +23,19 @@ This repository implements a 3-tier architecture (**Nginx Frontend/LB -> Node.js
 
 ### 🟠 4XX Client-Side Error Codes
 *   **401 Unauthorized**: The request is missing a valid authorization token or API key in the headers. Node.js rejects it because identity is unverified.
+  ```http
+Example:
+  GET /api/transaction HTTP/1.1
+Host: 98.88.35.125
+User-Agent: curl/7.68.0
+Accept: */*
+
+Fix: We need to provide authorization
+curl -X GET http://98.88.35 \
+     -H "Authorization: Bearer your-secret-json-web-token-here"
+
+```
+
 *   **403 Forbidden**: Node.js validated the user's identity, but their assigned role lacks permissions to access the specific transaction route.
 *   **404 Not Found**: The endpoint path was mistyped (e.g., `/api/transactions`), or Nginx does not have a matching location block routing the path to the backend.
 *   **405 Method Not Allowed**: The route exists, but you sent an unsupported HTTP method (e.g., executing a `GET` on an endpoint configured exclusively for `POST`).
