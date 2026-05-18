@@ -5,7 +5,7 @@ This repository implements a 3-tier architecture (**Nginx Frontend/LB -> Node.js
 
 ## 🗺️ Architecture Overview
 *   **Frontend / Load Balancer:** Nginx (Port 80)
-*   **Application Layer:** Node.js Express (Port 3000)
+*   **Application Layer:** Node.js Express (Port 8080)
 *   **Database Layer:** MySQL (Port 3306)
 
 ---
